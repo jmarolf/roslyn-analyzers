@@ -1,0 +1,30 @@
+<!-- Copyright (c)  Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NuspecPackageId>ProjectSystem.Analyzers</NuspecPackageId>
+    <Description>ProjectSystem Analyzers</Description>
+    <Summary>ProjectSystem Analyzers</Summary>
+    <ReleaseNotes>ProjectSystem Analyzers</ReleaseNotes>
+    <PackageTags>Roslyn CodeAnalysis Compiler CSharp VB VisualBasic Diagnostic Analyzers Syntax Semantics</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AnalyzerNupkgAssembly Include="ProjectSystem.Analyzers.dll" />
+    <AnalyzerNupkgAssembly Include="ProjectSystem.CSharp.Analyzers.dll" />
+    <AnalyzerNupkgAssembly Include="ProjectSystem.VisualBasic.Analyzers.dll" />
+
+    <AnalyzerNupkgFile Include="ProjectSystem.Analyzers.props" />
+    <AnalyzerNupkgFile Include="ProjectSystem.CSharp.Analyzers.props" />
+    <AnalyzerNupkgFile Include="ProjectSystem.VisualBasic.Analyzers.props" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ProjectSystem.Analyzers\Core\ProjectSystem.Analyzers.csproj" />
+    <ProjectReference Include="..\..\src\ProjectSystem.Analyzers\CSharp\ProjectSystem.CSharp.Analyzers.csproj" />
+    <ProjectReference Include="..\..\src\ProjectSystem.Analyzers\VisualBasic\ProjectSystem.VisualBasic.Analyzers.vbproj" />
+  </ItemGroup>
+</Project>
