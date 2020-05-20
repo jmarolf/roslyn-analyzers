@@ -1,6 +1,18 @@
 <!-- Copyright (c)  Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
 <Project>
 
+  <!-- Add License and Third Party Notices files into each VSIX. -->
+  <ItemGroup>
+    <Content Include="$(RepoRoot)\assets\EULA.rtf">
+      <Link>EULA.rtf</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="$(RepoRoot)\assets\ThirdPartyNotices.rtf">
+       <Link>ThirdPartyNotices.rtf</Link>
+       <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+
   <!--  
     Resx files are already included by the SDK. 
     Update them with GenerateSource property to process them by GenerateResxSource target
