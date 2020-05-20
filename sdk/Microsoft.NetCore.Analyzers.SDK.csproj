@@ -1,0 +1,28 @@
+<!-- Copyright (c)  Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageId>NETAnalyzers.SDK</PackageId>
+    <Description>Internal only analyzer SDK nuget package.</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <NoWarn>$(NoWarn),NU5128</NoWarn>
+  </PropertyGroup>
+
+  <!-- Reference these projects to ensure build dependencies are correct -->
+  <ItemGroup>
+    <ProjectReference Include="..\src\NetAnalyzers\Core\Microsoft.CodeAnalysis.NetAnalyzers.csproj" PrivateAssets="All"  />
+    <ProjectReference Include="..\src\NetAnalyzers\CSharp\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.csproj" PrivateAssets="All"  /> 
+    <ProjectReference Include="..\src\NetAnalyzers\VisualBasic\Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.vbproj" PrivateAssets="All"  />
+  </ItemGroup>
+  
+  <!-- Add specific PackagePath metadate to the output files so we know they are packed in the correct locations -->
+  <ItemGroup>
+    <Content Include="sdk.props" Pack="true" PackagePath="sdk" Visible="false" />
+    <None Include="$(ArtifactsBinDir)\Microsoft.CodeAnalysis.NetAnalyzers\$(Configuration)\netstandard2.0\Microsoft.CodeAnalysis.NetAnalyzers.dll" Pack="true" PackagePath="analyzers/dotnet" Visible="false" />
+    <None Include="$(ArtifactsBinDir)\Microsoft.CodeAnalysis.CSharp.NetAnalyzers\$(Configuration)\netstandard2.0\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll" Pack="true" PackagePath="analyzers/dotnet" Visible="false" />
+    <None Include="$(ArtifactsBinDir)\Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers\$(Configuration)\netstandard2.0\Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.dll" Pack="true" PackagePath="analyzers/dotnet" Visible="false" />
+  </ItemGroup>
+</Project>
